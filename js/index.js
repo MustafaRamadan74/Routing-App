@@ -66,10 +66,10 @@ const GreenHouse = L.geoJSON(GreenHouses, {
 
 const PlayGround = L.geoJSON(PlayGrounds, {
     style: {
-        color: "#02B3AD",
+        color: "#fff",
         weight: 0.5,
         fill: true,
-        fillColor: "#36FFF8",
+        fillColor: "#33C257",
         fillOpacity: 0.8,
     }
 }).addTo(map);
@@ -128,6 +128,8 @@ searchControl.on('search:locationfound', function (e) {
         waypoints: [
             L.latLng(Curlat, Curlng),
             L.latLng(Slat, Slng)
+            // L.latLng(30.113531, 31.247839),
+            // L.latLng(Slat, Slng)
         ],
         showAlternatives: false,
         router: L.Routing.graphHopper('8b4651d3-fd4a-4730-8d67-bd8e983be6b5', {
