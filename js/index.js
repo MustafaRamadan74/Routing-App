@@ -145,7 +145,7 @@ map.addControl(searchControl);
 
 setInterval(() => {
     navigator.geolocation.getCurrentPosition(getPosition);
-}, 2000);
+}, 500);
 
 let CurMarker;
 let Curlat, Curlng;
