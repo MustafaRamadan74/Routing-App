@@ -143,12 +143,31 @@ searchControl.on('search:locationfound', function (e) {
 
 map.addControl(searchControl);
 
-setInterval(() => {
-    navigator.geolocation.getCurrentPosition(getPosition);
-}, 500);
-
 let CurMarker;
 let Curlat, Curlng;
+
+if (!navigator.geolocation) {
+    alert("your browser doesn't support the geolocation service")
+}
+
+// setInterval(() => {
+//     navigator.geolocation.watchPosition(getPosition, errors, options);
+// }, 2000);
+
+function errors(error) {
+    if (error.code === 1) {
+        alert("please allow access to geolocation")
+    }
+    else {
+        alert("position unavailable")
+    }
+};
+
+const options = {
+    enableHighAccuracy: true,
+    
+}
+
 function getPosition(position) {
     Curlat = position.coords.latitude;
     Curlng = position.coords.longitude;
@@ -157,4 +176,10 @@ function getPosition(position) {
         map.removeLayer(CurMarker)
     }
     CurMarker = L.marker([Curlat, Curlng]).addTo(map);
+
+    console.log(Curlat);
+    console.log(Curlng)
 };
+
+navigator.geolocation.watchPosition(getPosition, errors, options);
+
